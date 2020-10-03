@@ -16,5 +16,31 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "Window 1",
+      "url": "/?appWindow=0"
+    },
+    {
+      "name": "Window 2",
+      "url": "/?appWindow=1"
+    },
+    {
+      "name": "Window 3",
+      "url": "/?appWindow=2"
+    },
+    {
+      "name": "Window 4",
+      "url": "/?appWindow=3"
+    },
+    {
+      "name": "Window 5",
+      "url": "/?appWindow=4"
+    },
+    {
+      "name": "Window 6",
+      "url": "/?appWindow=5"
+    }
+  ]
 }
