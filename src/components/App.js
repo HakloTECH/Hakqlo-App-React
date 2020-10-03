@@ -3,34 +3,20 @@ import Splash from './Splash'
 import WindowList from './WindowList'
 import Install from './Install'
 
-class App extends React.Component {
-  state = {
-    isPWA: window.matchMedia('(display-mode: standalone)').matches
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', e => {
-      this.setState({
-        isPWA: window.matchMedia('(display-mode: standalone)').matches
-      })
-    })
-  }
-
-  render() {
-    if (this.state.isPWA) {
-      return (
-        <div className='App'>
-          <Splash />
-          <WindowList />
-        </div>
-      )
-    } else {
-      return (
-        <div className='App'>
-          <Install />
-        </div>
-      )
-    }
+function App() {
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    return (
+      <div className='App'>
+        <Splash />
+        <WindowList />
+      </div>
+    )
+  } else {
+    return (
+      <div className='App'>
+        <Install />
+      </div>
+    )
   }
 }
 
