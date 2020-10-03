@@ -5,6 +5,7 @@ export default class extends React.Component {
   state = {
     scrollXStart: 0,
     WLScrollXStart: 0,
+    isTouching: false,
   }
 
   componentDidMount() {
@@ -12,19 +13,25 @@ export default class extends React.Component {
     const listCover = this.listCover.current
 
     listCover.addEventListener('touchstart', e => {
-      this.setState({
-        scrollXStart: e.changedTouches[0].pageX*1.5/window.screen.width,
-        WLScrollXStart: winList.state.scrollLength
-      })
-      winList.setState({scrolling: true})
+      if (!this.state.isTouching) {
+        this.setState({
+          scrollXStart: e.changedTouches[0].pageX*1.5/window.screen.width,
+          WLScrollXStart: winList.state.scrollLength,
+          isTouching: true,
+        })
+        winList.setState({scrolling: true})
+      }
     }, {passive: false})
     listCover.addEventListener('touchmove', e => {
-      e.preventDefault()
-      const moveLength = this.state.scrollXStart-e.changedTouches[0].pageX*1.5/window.screen.width+this.state.WLScrollXStart
-      if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
-      winList.scrollTo(moveLength)
+      if (this.state.isTouching) {
+        e.preventDefault()
+        const moveLength = this.state.scrollXStart-e.changedTouches[0].pageX*1.5/window.screen.width+this.state.WLScrollXStart
+        if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
+        winList.scrollTo(moveLength)
+      }
     }, {passive: false})
     listCover.addEventListener('touchend', e => {
+      this.setState({isTouching: false})
       winList.setState({scrolling: false})
       winList.bringToCenter()
     }, {passive: false})
