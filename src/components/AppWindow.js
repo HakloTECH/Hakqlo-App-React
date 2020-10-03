@@ -17,19 +17,17 @@ export default class extends React.Component {
         this.setState({
           scrollXStart: e.changedTouches[0].pageX*1.5/window.screen.width,
           WLScrollXStart: winList.state.scrollLength,
-          isTouching: e.changedTouches[0].identifier,
+          isTouching: true,
         })
         winList.setState({scrolling: true})
       }
     }, {passive: false})
     listCover.addEventListener('touchmove', e => {
-      for (const i of e.changedTouches) {
-        if (this.state.isTouching === i.identifier) {
-          e.preventDefault()
-          const moveLength = this.state.scrollXStart-i.pageX*1.5/window.screen.width+this.state.WLScrollXStart
-          if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
-          winList.scrollTo(moveLength)
-        }
+      if (this.state.isTouching) {
+        e.preventDefault()
+        const moveLength = this.state.scrollXStart-e.changedTouches[0].pageX*1.5/window.screen.width+this.state.WLScrollXStart
+        if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
+        winList.scrollTo(moveLength)
       }
     }, {passive: false})
     listCover.addEventListener('touchend', e => {
