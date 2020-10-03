@@ -3,8 +3,7 @@ import '../css/install.scss'
 
 export default class extends React.Component {
   state = {
-    installPrompt: null,
-    installed: false,
+    installPrompt: null
   }
 
   componentDidMount() {
@@ -25,8 +24,7 @@ export default class extends React.Component {
               this.state.installPrompt.userChoice.then((choice) => {
                 if (choice.outcome === 'accepted') {
                   this.setState({
-                    installPrompt: null,
-                    installed: true
+                    installPrompt: null
                   })
                 }
               })
