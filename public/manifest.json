@@ -1,11 +1,7 @@
 {
-  "short_name": "Hakqlo",
   "name": "Hakqlo",
+  "short_name": "Hakqlo",
   "icons": [
-    {
-      "src": "favicon.svg",
-      "type": "image/svg+xml"
-    },
     {
       "src": "icon_512.png",
       "sizes": "512x512",
