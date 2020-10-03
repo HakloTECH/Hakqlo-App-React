@@ -22,14 +22,14 @@ export default class extends React.Component {
             if (this.state.installPrompt) {
               this.state.installPrompt.prompt()
               this.state.installPrompt.userChoice.then(choice => {
-                if (choice.outcome !== 'dismissed') {
+                if (choice.outcome === 'accepted') {
                   this.setState({
                     installPrompt: null
                   })
                 }
               })
             } else {
-              alert('この端末にはインストールできません')
+              alert('インストールできませんでした')
             }
           }}>
           インストール
