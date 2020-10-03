@@ -25,7 +25,12 @@ export default class extends React.Component {
       const param = value.split('=')
       params[param[0]] = param[1]
     })
-    if (params.appWindow) this.setState({currentWin: Number(params.appWindow)})
+    if (params.appWindow) {
+      this.setState({
+        currentWin: Number(params.appWindow),
+        scrollLength: Number(params.appWindow)
+      })
+    }
   }
 
   scrollTo(moveLength) {
