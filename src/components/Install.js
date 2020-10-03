@@ -24,7 +24,6 @@ export default class extends React.Component {
               this.state.installPrompt.prompt()
               this.state.installPrompt.userChoice.then((choice) => {
                 if (choice.outcome === 'accepted') {
-                  this.props.setIsPWA(window.matchMedia('(display-mode: standalone)').matches)
                   this.setState({
                     installPrompt: null,
                     installed: true
