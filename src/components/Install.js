@@ -21,8 +21,8 @@ export default class extends React.Component {
           onClick={() => {
             if (this.state.installPrompt) {
               this.state.installPrompt.prompt()
-              this.state.installPrompt.userChoice.then((choice) => {
-                if (choice.outcome === 'accepted') {
+              this.state.installPrompt.userChoice.then(choice => {
+                if (choice.outcome !== 'dismissed') {
                   this.setState({
                     installPrompt: null
                   })
