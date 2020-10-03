@@ -3,7 +3,6 @@ import AppWindow from './AppWindow'
 import { Window1, Window2, Window3, Window4, Window5, Window6 } from './Windows'
 import '../css/window.scss'
 
-
 export default class extends React.Component {
   appWindows = [
     Window1,

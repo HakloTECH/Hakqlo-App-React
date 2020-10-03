@@ -2,7 +2,7 @@ import React from 'react'
 
 const Window1 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 1</p>
       <button
         onClick={() => {
@@ -15,7 +15,7 @@ const Window1 = props => {
 }
 const Window2 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 2</p>
       <button
         onClick={() => {
@@ -28,7 +28,7 @@ const Window2 = props => {
 }
 const Window3 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 3</p>
       <button
         onClick={() => {
@@ -41,7 +41,7 @@ const Window3 = props => {
 }
 const Window4 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 4</p>
       <button
         onClick={() => {
@@ -54,7 +54,7 @@ const Window4 = props => {
 }
 const Window5 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 5</p>
       <button
         onClick={() => {
@@ -67,7 +67,7 @@ const Window5 = props => {
 }
 const Window6 = props => {
   return (
-    <div className='window-content'>
+    <div className='center-content'>
       <p>Window 6</p>
       <button
         onClick={() => {
