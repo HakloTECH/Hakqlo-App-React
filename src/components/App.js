@@ -4,7 +4,9 @@ import WindowList from './WindowList'
 import Install from './Install'
 
 function App() {
-  if (window.matchMedia('(display-mode: standalone)').matches) {
+  const [isPWA, setIsPWA] = React.useState(window.matchMedia('(display-mode: standalone)').matches)
+
+  if (isPWA) {
     return (
       <div className='App'>
         <Splash />
@@ -14,7 +16,7 @@ function App() {
   } else {
     return (
       <div className='App'>
-        <Install />
+        <Install setIsPWA={setIsPWA} />
       </div>
     )
   }
