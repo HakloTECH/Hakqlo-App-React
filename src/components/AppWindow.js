@@ -2,32 +2,25 @@ import React from 'react'
 
 export default class extends React.Component {
   listCover = React.createRef()
-  WSR = 0.6
-  WXR = 50
   state = {
     scrollXStart: 0,
     WLScrollXStart: 0,
-    scrollRatio: 100/window.screen.width/this.WSR/this.WXR,
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setState({scrollRatio: 100/window.screen.width/this.WSR/this.WXR})
-    })
-    
     const winList = this.props.winList
     const listCover = this.listCover.current
 
     listCover.addEventListener('touchstart', e => {
       this.setState({
-        scrollXStart: e.changedTouches[0].screenX*this.state.scrollRatio,
+        scrollXStart: e.changedTouches[0].pageX*1.5/window.screen.width,
         WLScrollXStart: winList.state.scrollLength
       })
       winList.setState({scrolling: true})
     }, {passive: false})
     listCover.addEventListener('touchmove', e => {
       e.preventDefault()
-      const moveLength = this.state.scrollXStart-e.changedTouches[0].screenX*this.state.scrollRatio+this.state.WLScrollXStart
+      const moveLength = this.state.scrollXStart-e.changedTouches[0].pageX*1.5/window.screen.width+this.state.WLScrollXStart
       if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
       winList.scrollTo(moveLength)
     }, {passive: false})
@@ -66,7 +59,7 @@ export default class extends React.Component {
         }
         style={
           isListView ? {
-            transform: `scale(${this.WSR}, ${this.WSR}) translateZ(${Math.cos(wAngle)*15+60}px) translateX(${Math.sin(wAngle) * this.WXR}%)`,
+            transform: `scale(0.6, 0.6) translateZ(${Math.cos(wAngle)*15+60}px) translateX(${Math.sin(wAngle) * 50}%)`,
             opacity: Math.cos(wAngle) > -1/2**0.5 ? (Math.cos(wAngle)+1/2**0.5)/(2+2/2**0.5)+0.5 : (Math.cos(wAngle)+1/2**0.5)/(3**0.5-2/2**0.5)+0.5
           } : null
         }>
