@@ -20,6 +20,15 @@ export default class extends React.Component {
     scrolling: false,
   }
 
+  componentDidMount() {
+    let params = {}
+    window.location.search.slice(1).split('&').forEach(value => {
+      const param = value.split('=')
+      params[param[0]] = param[1]
+    })
+    if (params.appWindow) this.setState({currentWin: Number(params.appWindow)})
+  }
+
   scrollTo(moveLength) {
     let scrollLength = moveLength % this.appWindows.length
     if (scrollLength < 0) scrollLength += this.appWindows.length
