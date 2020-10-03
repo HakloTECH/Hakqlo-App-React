@@ -18,9 +18,9 @@ export default class extends React.Component {
     return (
       <div className='install center-content'>
         <h1>Hakqlo</h1>
-        {this.state.installPrompt ?
-          <button
-            onClick={() => {
+        <button
+          onClick={() => {
+            if (this.state.installPrompt) {
               this.state.installPrompt.prompt()
               this.state.installPrompt.userChoice.then((choice) => {
                 if (choice.outcome === 'accepted') {
@@ -30,12 +30,12 @@ export default class extends React.Component {
                   })
                 }
               })
-            }}>
-            インストール
-          </button> : this.state.installed ?
-          <p>インストールされました</p> :
-          <p>この端末にはインストールできません</p>
-        }
+            } else {
+              alert('この端末にはインストールできません')
+            }
+          }}>
+          インストール
+        </button>
       </div>
     )
   }
