@@ -24,7 +24,7 @@ export default class extends React.Component {
     }, {passive: false})
     listCover.addEventListener('touchmove', e => {
       for (const i of e.changedTouches) {
-        if (this.state.isTouching === i) {
+        if (this.state.isTouching === i.identifier) {
           e.preventDefault()
           const moveLength = this.state.scrollXStart-i.pageX*1.5/window.screen.width+this.state.WLScrollXStart
           if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
